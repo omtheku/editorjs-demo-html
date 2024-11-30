@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <style>*{font-family: "Inter";}</style>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@2"></script>
+</head>
+<body>
+
+    <div id="editorjs"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const editor = new EditorJS({
+                holder: 'editorjs',
+                // You can add other configurations here
+                tools: {
+                    header: Header,
+                    list: {
+                        class: EditorjsList,
+                        inlineToolbar: true,
+                        config: {
+                          defaultStyle: 'unordered'
+                        },
+                      },
+                },
+            });
+            editor.save().then((outputData) => {
+                console.log('Article data: ', outputData)
+              }).catch((error) => {
+                console.log('Saving failed: ', error)
+              });
+        });
+    </script>
+
+</body>
+</html>
